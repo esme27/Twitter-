@@ -81,8 +81,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.profilePicture.setImageWithURL(url!)
         cell.userName.text = tweets![indexPath.row].user!.name!
         cell.twitterName.text = "@" + (tweets![indexPath.row].user?.screenname!)!
-        cell.actualTweet.text = tweets![indexPath.row].text!
-        cell.timeStamp.text = tweets![indexPath.row].createdAtString!
+        cell.Tweetss.text = tweets![indexPath.row].text!
+        cell.tweetTime.text = tweets![indexPath.row].createdAtString!
         
         
         return cell
