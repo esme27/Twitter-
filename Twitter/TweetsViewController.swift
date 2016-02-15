@@ -19,8 +19,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+                
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -33,6 +32,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         TwitterClient.sharedInstance.homeTimelineWithParams(nil , completion: { (tweets, error) -> () in
             self.tweets = tweets
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        
             //can reload here too
         })
 }
