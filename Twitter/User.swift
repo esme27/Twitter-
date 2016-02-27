@@ -72,6 +72,8 @@ class User: NSObject {
                     try data = NSJSONSerialization.dataWithJSONObject(user!.dictionary, options: .PrettyPrinted)
                     NSUserDefaults.standardUserDefaults().setObject(data, forKey: currentUserKey)
                 } catch {
+                    
+                    
                     print(error)
                 }
             }

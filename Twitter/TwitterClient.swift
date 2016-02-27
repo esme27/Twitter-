@@ -37,7 +37,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         
         
         GET("1.1/statuses/home_timeline.json", parameters: params, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
-            //print("home timeline:\(response!)")
+           // print("home timeline:\(response!)")
             let tweets = Tweet.tweetsWithArray(response as! [NSDictionary])
             completion(tweets: tweets, error: nil)
             
@@ -69,6 +69,28 @@ class TwitterClient: BDBOAuth1SessionManager {
                 
         }
         
+    }
+    
+    func retweet(id: Int, params: NSDictionary?, completion: (error: NSError?) -> () ){
+        POST("1.1/statuses/retweet/\(id).json", parameters: params, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            print("Retweeted tweet with id: \(id)")
+            completion(error: nil)
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("Couldn't retweet")
+                completion(error: error)
+            }
+        )
+    }
+    
+    func unRetweet(id: Int, params: NSDictionary?, completion: (error: NSError?) -> () ){
+        POST("1.1/statuses/unretweet/\(id).json", parameters: params, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            print("Unretweeted tweet with id: \(id)")
+            completion(error: nil)
+            }, failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("Couldn't unretweet")
+                completion(error: error)
+            }
+        )
     }
     
     

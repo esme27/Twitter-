@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TweetCellButtonDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -33,6 +33,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         TwitterClient.sharedInstance.homeTimelineWithParams(nil , completion: { (tweets, error) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
+           self.tableView.reloadData()
             self.refreshControl.endRefreshing()
         
             //can reload here too
@@ -76,17 +77,19 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let cell = tableView.dequeueReusableCellWithIdentifier("tweetCell", forIndexPath: indexPath) as! TweetCell
         
+        cell.buttonDelegate = self
         
-        
-        
-        let url = NSURL(string: tweets![indexPath.row].user!.profileImageUrl!);
-        cell.profilePicture.setImageWithURL(url!)
-        cell.userName.text = tweets![indexPath.row].user!.name!
-        cell.twitterName.text = "@" + (tweets![indexPath.row].user?.screenname!)!
-        cell.Tweetss.text = tweets![indexPath.row].text!
-        cell.tweetTime.text = tweets![indexPath.row].createdAtString!
-        
-        
+//        
+//        let url = NSURL(string: tweets![indexPath.row].user!.profileImageUrl!);
+//        cell.profilePicture.setImageWithURL(url!)
+//        cell.userName.text = tweets![indexPath.row].user!.name!
+//        cell.twitterName.text = "@" + (tweets![indexPath.row].user?.screenname!)!
+//        cell.Tweetss.text = tweets![indexPath.row].text!
+//        cell.tweetTime.text = tweets![indexPath.row].createdAtString!
+//        
+//        
+
+        cell.tweet = tweets![indexPath.row]
         return cell
         
     }
@@ -97,7 +100,67 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
         return 0
+        
     }
+    
+    func retweetClicked(tweetCell: TweetCell){
+        
+                        print("here1111111")
+        
+        
+        let tweet = tweetCell.tweet! as Tweet
+        
+        // Check if tweet has already been retweeted
+        // By way of cool ternary operator:
+        tweet.isRetweeted! ? (
+            // It's been retweeted already... let's unretweet it:
+            TwitterClient.sharedInstance.unRetweet(Int(tweetCell.tweetID!)!, params: nil, completion: {(error) -> () in
+                tweetCell.retweetButton.setImage(UIImage(named: "retweet-action.png"), forState: UIControlState.Selected)
+                
+                if tweet.retweetCount! > 1 {
+                    tweetCell.retweetLabel.text = String(tweet.retweetCount! - 1)
+                } else {
+                    tweetCell.retweetLabel.hidden = true
+                    tweetCell.retweetLabel.text = String(tweet.retweetCount! - 1)
+                }
+                
+                print("here")
+                // locally update tweet dictionary so we don't need to make network request in order to update that cell
+                tweet.retweetCount! -= 1
+                tweet.isRetweeted! = false
+            }) // END CLOSURE
+            ) : (
+                // YES! HASN'T BEEN RETWEETED, SO LET'S DO THAT:
+                TwitterClient.sharedInstance.retweet(Int(tweetCell.tweetID!)!, params: nil, completion: {(error) -> () in
+                    tweetCell.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed.png"), forState: UIControlState.Selected)
+                    
+                    if tweet.retweetCount! > 0 {
+                        tweetCell.retweetLabel.text = String(tweet.retweetCount! + 1)
+                    } else {
+                        tweetCell.retweetLabel.hidden = false
+                        tweetCell.retweetLabel.text = String(tweet.retweetCount! + 1)
+                    }
+                                    print("here2")
+                    // locally update tweet dictionary so we don't need to make network request in order to update that cell
+                    tweet.retweetCount! += 1
+                    tweet.isRetweeted! = true
+                }) // END CLOSURE
+        ) // END TERNARY OPERATOR
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+        func likeClicked(tweetCell: TweetCell) {
+            
+        }
+    
+
 
     /*
     // MARK: - Navigation

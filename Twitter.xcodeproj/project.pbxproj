@@ -17,6 +17,7 @@
 		740B0DA91C70782D000DBDFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B0DA81C70782D000DBDFD /* User.swift */; };
 		740B0DAB1C707867000DBDFD /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B0DAA1C707867000DBDFD /* Tweet.swift */; };
 		740B0DAD1C70E19C000DBDFD /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B0DAC1C70E19C000DBDFD /* TweetsViewController.swift */; };
+		74B2B2321C7AC9E800BD72FD /* retweet-action-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B2B2311C7AC9E800BD72FD /* retweet-action-on.png */; };
 		74DE8A511C715B1000AE2349 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DE8A501C715B1000AE2349 /* TweetCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		740B0DA81C70782D000DBDFD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		740B0DAA1C707867000DBDFD /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		740B0DAC1C70E19C000DBDFD /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
+		74B2B2311C7AC9E800BD72FD /* retweet-action-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "retweet-action-on.png"; path = "../../retweet-action-on.png"; sourceTree = "<group>"; };
 		74DE8A501C715B1000AE2349 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		79983499B4B5F4D4B91B3F4C /* Pods_Twitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47E7AFE19D7306AA0779815 /* Pods-Twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter/Pods-Twitter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				740B0D941C6F8CB2000DBDFD /* ViewController.swift */,
 				740B0D961C6F8CB2000DBDFD /* Main.storyboard */,
 				740B0D991C6F8CB2000DBDFD /* Assets.xcassets */,
+				74B2B2311C7AC9E800BD72FD /* retweet-action-on.png */,
 				740B0D9B1C6F8CB2000DBDFD /* LaunchScreen.storyboard */,
 				740B0D9E1C6F8CB2000DBDFD /* Info.plist */,
 				740B0DAC1C70E19C000DBDFD /* TweetsViewController.swift */,
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				740B0D9D1C6F8CB2000DBDFD /* LaunchScreen.storyboard in Resources */,
+				74B2B2321C7AC9E800BD72FD /* retweet-action-on.png in Resources */,
 				740B0D9A1C6F8CB2000DBDFD /* Assets.xcassets in Resources */,
 				740B0D981C6F8CB2000DBDFD /* Main.storyboard in Resources */,
 			);
