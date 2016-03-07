@@ -16,9 +16,9 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [X] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
+- [] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 - [X] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
-- [X] User can pull to refresh.
+- [] User can pull to refresh.
 
 The following **additional** features are implemented:
 
@@ -169,7 +169,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='twitter.gif'  title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src= 'twitter.gif'  title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
